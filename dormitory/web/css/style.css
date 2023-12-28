@@ -1,0 +1,44 @@
+/* 设置背景图片和背景动画 */
+body {
+    background: url("../img/1.jpg") no-repeat;
+    background-size: 100% 140%;
+    animation-name: bg;
+    animation-duration: 20s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+/* 定义背景动画关键帧 */
+@keyframes bg {
+    0%   {background-image: url("../img/1.jpg"); background-size: 100% 140%;}
+    25%  {background-image: url("../img/2.jpg"); background-size: 100% 140%;}
+    50%  {background-image: url("../img/3.jpg"); background-size: 100% 140%;}
+    75%  {background-image: url("../img/4.jpg"); background-size: 100% 140%;}
+    100% {background-image: url("../img/1.jpg"); background-size: 100% 140%;}
+}
+
+/* 设置表单样式 */
+.form {
+    background: rgba(255, 255, 255, 0.7); /* 表单背景颜色及透明度 */
+    width: 400px; /* 表单宽度 */
+    margin: 120px auto; /* 上下居中 */
+}
+
+/* 其他样式 */
+.fa {
+    display: inline-block; /* 设置为行内块元素 */
+    top: 27px;
+    left: 6px;
+    position: relative; /* 相对定位 */
+    color: #ccc; /* 字体颜色 */
+}
+
+input[type="text"],
+input[type="password"] {
+    padding-left: 26px; /* 文本框左侧内边距 */
+}
+
+.checkbox {
+    padding-left: 21px; /* 复选框左侧内边距 */
+}
