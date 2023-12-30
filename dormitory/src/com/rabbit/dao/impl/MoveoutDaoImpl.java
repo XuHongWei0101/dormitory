@@ -129,4 +129,32 @@ public class MoveoutDaoImpl implements MoveoutDao {
         }
         return list;
     }
+
+    /**
+     * 更新迁出记录信息
+     * @param moveout 包含更新信息的迁出记录对象
+     */
+    @Override
+    public void update(Moveout moveout) {
+        // 获取数据库连接
+        Connection connection = JDBCUtil.getConnection();
+        // 构造 SQL 语句
+        String sql = "update moveout set reason=?, create_date=? where id=?";
+        PreparedStatement statement = null;
+        try {
+            // 创建 PreparedStatement 对象
+            statement = connection.prepareStatement(sql);
+            // 设置参数
+            statement.setString(1, moveout.getReason());
+            statement.setString(2, moveout.getCreateDate());
+            statement.setInt(3, moveout.getId());
+            // 执行 SQL 语句
+            statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            // 释放资源
+            JDBCUtil.release(connection, statement, null);
+        }
+    }
 }

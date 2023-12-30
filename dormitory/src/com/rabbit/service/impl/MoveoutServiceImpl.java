@@ -69,4 +69,14 @@ public class MoveoutServiceImpl implements MoveoutService {
         // 否则根据关键字和数值进行搜索
         return this.moveoutDao.search(key, value);
     }
+
+    /**
+     * 更新迁出记录信息
+     * @param moveout 包含更新信息的迁出记录对象
+     */
+    @Override
+    public void update(Moveout moveout) {
+        // 执行实际的更新操作，调用数据访问对象的 update 方法
+        moveoutDao.update(moveout);
+    }
 }

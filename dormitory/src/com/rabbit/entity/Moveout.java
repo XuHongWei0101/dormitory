@@ -17,6 +17,12 @@ public class Moveout {
         this.createDate = createDate;
     }
 
+    public Moveout(Integer id, String updateDate, String updateReason) {
+        this.id = id;
+        this.createDate = updateDate;
+        this.reason = updateReason;
+    }
+
     public String getStudentName() {
         return studentName;
     }

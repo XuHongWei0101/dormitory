@@ -70,6 +70,18 @@ public class MoveoutServlet extends HttpServlet {
                 req.setAttribute("list", this.moveoutService.search(key, value)); // 设置请求属性 list，值为搜索到的迁出记录列表
                 req.getRequestDispatcher("moveoutrecord.jsp").forward(req, resp); // 转发到 moveoutrecord.jsp 页面
                 break;
+            case "update":
+                String idString = req.getParameter("moveoutId"); // 获取前端传递的迁出记录ID
+                if (idString != null && !idString.isEmpty()) {
+                    int moveoutId = Integer.parseInt(idString); // 获取前端传递的迁出记录ID
+                    String updateReason = req.getParameter("reason"); // 获取请求参数reason
+                    String updateDate = req.getParameter("date"); // 获取请求参数Date
+                    Moveout updatedMoveout = new Moveout(moveoutId, updateDate, updateReason); // 创建更新后的迁出记录对象
+                    this.moveoutService.update(updatedMoveout); // 调用迁出服务更新迁出记录
+                } else {
+                    // 处理id为null或者空字符串的情况，例如抛出异常或者进行其他处理
+                    throw new IllegalArgumentException("Moveout ID is null or empty");
+                }
         }
     }
 }
